@@ -21,7 +21,8 @@
   },
   "plugins": ["jest", "jest-dom", "prettier"],
   "rules": {
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+    "no-unused-vars": "off"
   },
   "settings": {
     "react": {

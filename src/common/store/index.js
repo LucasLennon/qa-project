@@ -1,3 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit'
 
-export default configureStore({})
+import questions from '../../questions-module/store'
+
+export default configureStore({
+  reducer: {
+    questions,
+  },
+})

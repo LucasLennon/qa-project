@@ -2,7 +2,7 @@ import configureMockStore from 'redux-mock-store'
 import reducer, { initialState, addQuestion } from './index'
 import {
   ADD_QUESTION,
-  REMOVE_ALL_QUESTION,
+  REMOVE_ALL_QUESTIONS,
   REMOVE_QUESTION,
   EDIT_QUESTION,
 } from './constants'
@@ -75,7 +75,7 @@ describe('Questions Store', () => {
     })
 
     const action = {
-      type: REMOVE_ALL_QUESTION,
+      type: REMOVE_ALL_QUESTIONS,
     }
 
     localStore.dispatch(action)

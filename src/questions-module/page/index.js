@@ -4,9 +4,9 @@ import { useSelector } from 'react-redux'
 import { REMOVE_QUESTION, REMOVE_ALL_QUESTIONS } from '../store/constants'
 import ListQuestions from '../components/ListQuestion'
 import store from '../../common/store'
-import Layout from '../../common/layouts/Layout'
-import { Flex, Box } from '../../common/styles'
 import { Button } from '../../common/components'
+
+import { Box, Container, Grid, Typography } from '@material-ui/core'
 
 const sortQuestions = (a, b) => {
   const aQuestion = a.question.toLowerCase()
@@ -45,25 +45,32 @@ const App = () => {
   }
 
   return (
-    <Layout>
-      <Flex flexDirection="column" flexGrow={1}>
-        <Flex>
-          <h3>Created Questions</h3>
-          <Box>
-            <Button type="button" onClick={() => setSorted(true)}>
+    <Container>
+      <Grid container spacing={2}>
+        <Grid item xs={12} md={8}>
+          <Typography variant="h5">Created Questions</Typography>
+        </Grid>
+        <Grid item xs={12} md={4}>
+          <Grid container direction="row" justify="flex-end">
+            <Button
+              variant="contained"
+              color="primary"
+              type="button"
+              onClick={() => setSorted(true)}
+            >
               Sort Questions
             </Button>
-          </Box>
-        </Flex>
-        <Box flexGrow={1}>
+          </Grid>
+        </Grid>
+        <Grid item xs={12}>
           <ListQuestions
             changeQuestion={setQuestionToEdit}
             questions={questions}
             removeQuestion={removeQuestion}
           />
-        </Box>
-      </Flex>
-    </Layout>
+        </Grid>
+      </Grid>
+    </Container>
   )
 }
 

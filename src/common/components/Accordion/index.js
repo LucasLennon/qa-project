@@ -1,13 +1,14 @@
-import { string } from 'prop-types'
+import { node, string } from 'prop-types'
 import React, { useRef, useState } from 'react'
 
+import { Flex } from '../../styles'
 import {
   AccordionContainer,
   AccordionHeader,
   AccordionValue,
 } from './index.style.js'
 
-const Accordion = ({ header, value }) => {
+const Accordion = ({ header, value, children }) => {
   const AccordionValueRef = useRef(0)
   const [isVisible, setIsVisible] = useState(false)
 
@@ -15,7 +16,12 @@ const Accordion = ({ header, value }) => {
 
   return (
     <AccordionContainer>
-      <AccordionHeader onClick={handleClickOnHeader}>{header}</AccordionHeader>
+      <Flex justifyContent="space-between">
+        <AccordionHeader onClick={handleClickOnHeader}>
+          {header}
+        </AccordionHeader>
+        {children}
+      </Flex>
       <AccordionValue
         data-testid={isVisible ? 'value-visible' : 'value-hidden'}
         ref={AccordionValueRef}
@@ -29,6 +35,7 @@ const Accordion = ({ header, value }) => {
 }
 
 Accordion.propTypes = {
+  children: node,
   header: string.isRequired,
   value: string.isRequired,
 }

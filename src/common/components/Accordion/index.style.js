@@ -1,3 +1,4 @@
+import { Typography } from '@material-ui/core'
 import styled, { css } from 'styled-components'
 
 const AccordionContainer = styled('div')`
@@ -18,7 +19,7 @@ const AccordionValueVisible = css`
   padding: 0.5rem;
 `
 
-const AccordionValue = styled('p')`
+const AccordionValue = styled(Typography)`
   height: 0%;
   margin: 0;
   max-height: 0;

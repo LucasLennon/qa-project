@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'
 
 import App from './questions-module/page'
 import store from './common/store'
-import GlobalStyle from './common/styles/GlobalStyles'
+import GlobalStyle from './common/styles/global.style'
 
 ReactDOM.render(
   <React.StrictMode>

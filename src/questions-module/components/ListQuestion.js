@@ -1,3 +1,4 @@
+import React from 'react'
 import { arrayOf, func, number, shape, string } from 'prop-types'
 
 import { Accordion, Button } from '../../common/components'
@@ -12,6 +13,7 @@ const ListQuestion = ({ questions, changeQuestion, removeQuestion }) => {
           <Accordion header={item.question} value={item.answer}>
             <ButtonGroup disableElevation variant="contained" color="primary">
               <Button
+                data-testid="remove-question"
                 color="secondary"
                 type="button"
                 mr="0.3rem"
@@ -19,7 +21,11 @@ const ListQuestion = ({ questions, changeQuestion, removeQuestion }) => {
               >
                 <DeleteIcon />
               </Button>
-              <Button type="button" onClick={() => changeQuestion(item)}>
+              <Button
+                data-testid="edit-question"
+                type="button"
+                onClick={() => changeQuestion(item)}
+              >
                 <EditIcon />
               </Button>
             </ButtonGroup>

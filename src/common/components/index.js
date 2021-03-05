@@ -1,4 +1,4 @@
 import Accordion from './Accordion'
-import Button from './Button'
+import ButtonStyled from './Button/index.style'
 
-export { Accordion, Button }
+export { Accordion, ButtonStyled as Button }

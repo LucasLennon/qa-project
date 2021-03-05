@@ -1,7 +1,7 @@
 import { node, string } from 'prop-types'
 import React, { useRef, useState } from 'react'
 
-import { Flex } from '../../styles'
+import { Box } from '@material-ui/core'
 import {
   AccordionContainer,
   AccordionHeader,
@@ -16,12 +16,12 @@ const Accordion = ({ header, value, children }) => {
 
   return (
     <AccordionContainer>
-      <Flex justifyContent="space-between">
+      <Box display="flex" justifyContent="space-between">
         <AccordionHeader onClick={handleClickOnHeader}>
           {header}
         </AccordionHeader>
         {children}
-      </Flex>
+      </Box>
       <AccordionValue
         data-testid={isVisible ? 'value-visible' : 'value-hidden'}
         ref={AccordionValueRef}

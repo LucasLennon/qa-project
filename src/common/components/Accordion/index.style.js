@@ -1,8 +1,5 @@
 import styled, { css } from 'styled-components'
 
-import { Flex } from '../../styles'
-import { Typography } from '@material-ui/core'
-
 const AccordionContainer = styled('div')`
   border: 1px solid lightgrey;
 `

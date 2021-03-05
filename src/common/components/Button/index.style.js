@@ -1,25 +1,11 @@
 import styled from 'styled-components'
 
-import { colors, colorVariations, spacing } from '../../styles/helpers'
+import { Button } from '@material-ui/core'
 
-const ButtonStyle = styled('button').attrs((props) => ({
-  bgColor: props.bgColor || 'primary',
-  color: props.color || '#fff',
-  p: props.p || '0.4rem',
-}))`
-  border: 2px solid ${({ bgColor }) => colorVariations[bgColor]};
-  background: initial;
-  cursor: pointer;
-  transition: all 300ms;
-
-  &:active {
-    border: 2px solid ${colorVariations.primary};
-    background: initial;
-    color: #000;
-  }
-
-  ${colors}
-  ${spacing}
-`
+const ButtonStyle = styled(Button).attrs((props) => ({
+  ...props,
+  variant: props.variant || 'contained',
+  color: props.color || 'primary',
+}))``
 
 export default ButtonStyle

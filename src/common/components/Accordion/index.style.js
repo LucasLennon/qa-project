@@ -1,4 +1,3 @@
-import { Typography } from '@material-ui/core'
 import styled, { css } from 'styled-components'
 
 const AccordionContainer = styled('div')`
@@ -19,7 +18,7 @@ const AccordionValueVisible = css`
   padding: 0.5rem;
 `
 
-const AccordionValue = styled(Typography)`
+const AccordionWrapper = styled('div')`
   height: 0%;
   margin: 0;
   max-height: 0;
@@ -29,4 +28,4 @@ const AccordionValue = styled(Typography)`
   ${(props) => props.isVisible && AccordionValueVisible}
 `
 
-export { AccordionContainer, AccordionHeader, AccordionValue }
+export { AccordionContainer, AccordionHeader, AccordionWrapper }

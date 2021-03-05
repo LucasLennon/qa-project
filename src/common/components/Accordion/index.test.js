@@ -14,18 +14,18 @@ describe('Accordion', () => {
   })
 
   it('should render the value as hidden', () => {
-    expect(screen.getByTestId('value-hidden')).toBeInTheDocument()
+    expect(screen.getByTestId('accordion-value-hidden')).toBeInTheDocument()
   })
 
   it('should render the value as visible after clicking the header', () => {
     userEvent.click(screen.getByRole('button', button))
-    expect(screen.getByTestId('value-visible')).toBeInTheDocument()
+    expect(screen.getByTestId('accordion-value-visible')).toBeInTheDocument()
   })
 
   it('should render the value as hidden after two clicks on the header', () => {
     userEvent.click(screen.getByRole('button', button))
-    expect(screen.getByTestId('value-visible')).toBeInTheDocument()
+    expect(screen.getByTestId('accordion-value-visible')).toBeInTheDocument()
     userEvent.click(screen.getByRole('button', button))
-    expect(screen.getByTestId('value-hidden')).toBeInTheDocument()
+    expect(screen.getByTestId('accordion-value-hidden')).toBeInTheDocument()
   })
 })

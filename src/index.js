@@ -4,7 +4,6 @@ import { Provider } from 'react-redux'
 
 import App from './questions-module/page'
 import store from './common/store'
-import GlobalStyle from './common/styles/global.style'
 
 import { ThemeProvider } from 'styled-components'
 

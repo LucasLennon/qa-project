@@ -13,6 +13,9 @@ function Tooltip({ children, content }) {
       onMouseLeave={() => setIsVisible(false)}
     >
       <Wrapper
+        data-testid={
+          isVisible ? 'tooltip-value-visible' : 'tooltip-value-hidden'
+        }
         ref={WrapperContent}
         isVisible={isVisible}
         maxHeight={WrapperContent.current.scrollHeight}

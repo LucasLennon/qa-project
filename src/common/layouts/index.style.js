@@ -1,4 +1,6 @@
 import styled from 'styled-components'
+import { colorVariations } from '../styles/helpers'
+import { Flex } from '../styles'
 
 const Container = styled('div')`
   align-items: center;
@@ -7,11 +9,12 @@ const Container = styled('div')`
   min-height: 100vh;
 `
 
-const Holder = styled('div')`
-  border: 2px solid lightgrey;
+const Holder = styled(Flex)`
+  border: 2px solid ${colorVariations.grey};
   border-radius: 0.3rem;
   padding: 1rem;
   min-width: 80%;
+  min-height: 700px;
 `
 
 export { Container, Holder }

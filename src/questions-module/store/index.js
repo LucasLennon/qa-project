@@ -5,7 +5,7 @@ export const initialState = [
     id: 1,
     question: 'How to add a question?',
     answer: 'Just use the form below!',
-    createdAt: new Date(),
+    createdAt: new Date().toISOString(),
     updatedAt: null,
   },
 ]
@@ -23,7 +23,7 @@ const questionStore = createSlice({
       const newQuestion = {
         ...payload,
         id: state.length + 1,
-        createdAt: new Date(),
+        createdAt: new Date().toISOString(),
         updatedAt: null,
       }
       return [...state, newQuestion]
@@ -43,7 +43,7 @@ const questionStore = createSlice({
       if (question) {
         question = Object.assign(question, {
           ...action.payload,
-          updatedAt: new Date(),
+          updatedAt: new Date().toISOString(),
         })
       }
       return state

@@ -6,12 +6,19 @@ import App from './questions-module/page'
 import store from './common/store'
 import GlobalStyle from './common/styles/global.style'
 
+import { ThemeProvider } from 'styled-components'
+
+import { createMuiTheme } from '@material-ui/core'
+
+const theme = createMuiTheme()
+
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-    <GlobalStyle />
+    <ThemeProvider theme={theme}>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
 )

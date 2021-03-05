@@ -1,11 +1,11 @@
 import { node, string } from 'prop-types'
 import React, { useRef, useState } from 'react'
 
-import { Box } from '@material-ui/core'
+import { Box, Typography } from '@material-ui/core'
 import {
   AccordionContainer,
   AccordionHeader,
-  AccordionValue,
+  AccordionWrapper,
 } from './index.style.js'
 
 const Accordion = ({ header, value, children }) => {
@@ -22,14 +22,16 @@ const Accordion = ({ header, value, children }) => {
         </AccordionHeader>
         {children}
       </Box>
-      <AccordionValue
-        data-testid={isVisible ? 'value-visible' : 'value-hidden'}
+      <AccordionWrapper
+        data-testid={
+          isVisible ? 'accordion-value-visible' : 'accordion-value-hidden'
+        }
         ref={AccordionValueRef}
         isVisible={isVisible}
         maxHeight={AccordionValueRef.current.scrollHeight}
       >
-        {value}
-      </AccordionValue>
+        <Typography>{value}</Typography>
+      </AccordionWrapper>
     </AccordionContainer>
   )
 }

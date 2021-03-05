@@ -9,7 +9,11 @@ import { ThemeProvider } from 'styled-components'
 
 import { createMuiTheme } from '@material-ui/core'
 
-const theme = createMuiTheme()
+const theme = createMuiTheme({
+  typography: {
+    fontFamily: ['Arial', 'Helvetica', 'sans-serif'],
+  },
+})
 
 ReactDOM.render(
   <React.StrictMode>

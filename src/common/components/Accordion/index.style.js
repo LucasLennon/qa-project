@@ -18,7 +18,7 @@ const AccordionValueVisible = css`
   padding: 0.5rem;
 `
 
-const AccordionValue = styled('p')`
+const AccordionWrapper = styled('div')`
   height: 0%;
   margin: 0;
   max-height: 0;
@@ -28,4 +28,4 @@ const AccordionValue = styled('p')`
   ${(props) => props.isVisible && AccordionValueVisible}
 `
 
-export { AccordionContainer, AccordionHeader, AccordionValue }
+export { AccordionContainer, AccordionHeader, AccordionWrapper }

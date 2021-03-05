@@ -1,6 +1,6 @@
 /*eslint-disable*/
 import React, { useRef, useState, useEffect } from 'react'
-import { func, number, oneOf, shape, string } from 'prop-types'
+import { func, number, oneOf, oneOfType, shape, string } from 'prop-types'
 
 import { ADD_QUESTION, EDIT_QUESTION } from '../store/constants'
 import { Button } from '../../common/components'
@@ -89,14 +89,11 @@ FormQuestions.propTypes = {
   cancelEdit: func.isRequired,
   handleSubmit: func.isRequired,
   removeAllQuestions: func.isRequired,
-  // questionToEdit: oneOf([
-  //   null,
-  //   shape({
-  //     id: number.isRequired,
-  //     question: string.isRequired,
-  //     answer: string.isRequired,
-  //   }).isRequired,
-  // ]),
+  questionToEdit: shape({
+    id: number.isRequired,
+    question: string.isRequired,
+    answer: string.isRequired,
+  }),
 }
 
 export default FormQuestions

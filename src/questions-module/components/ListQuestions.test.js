@@ -27,7 +27,7 @@ describe('ListQuestion', () => {
 
   it('should render answer', () => {
     expect(screen.getByText(initialState[0].answer)).toBeInTheDocument()
-    expect(screen.getByTestId('value-hidden')).toBeInTheDocument()
+    expect(screen.getByTestId('accordion-value-hidden')).toBeInTheDocument()
   })
 
   it('should trigger removeQuestion after click', () => {

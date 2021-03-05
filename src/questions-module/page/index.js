@@ -1,10 +1,11 @@
-import { useMemo, useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import { useSelector } from 'react-redux'
 
 import { REMOVE_QUESTION, REMOVE_ALL_QUESTIONS } from '../store/constants'
+import FormQuestions from '../components/FormQuestions'
 import ListQuestions from '../components/ListQuestion'
 import store from '../../common/store'
-import { Button } from '../../common/components'
+import { Button, Tooltip } from '../../common/components'
 
 import { Box, Container, Grid, Typography } from '@material-ui/core'
 
@@ -48,7 +49,11 @@ const App = () => {
     <Container>
       <Grid container spacing={2}>
         <Grid item xs={12} md={8}>
-          <Typography variant="h5">Created Questions</Typography>
+          <Box display="flex">
+            <Tooltip content="This area contains the questions already created by the user.">
+              <Typography variant="h5">Created Questions</Typography>
+            </Tooltip>
+          </Box>
         </Grid>
         <Grid item xs={12} md={4}>
           <Grid container direction="row" justify="flex-end">
@@ -67,6 +72,21 @@ const App = () => {
             changeQuestion={setQuestionToEdit}
             questions={questions}
             removeQuestion={removeQuestion}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <Box display="flex">
+            <Tooltip content="Here you create new questions and answers.">
+              <Typography variant="h5">Create your Questions</Typography>
+            </Tooltip>
+          </Box>
+        </Grid>
+        <Grid item xs={12}>
+          <FormQuestions
+            cancelEdit={() => setQuestionToEdit(null)}
+            handleSubmit={handleSubmit}
+            removeAllQuestions={removeAllQuestions}
+            questionToEdit={questionToEdit}
           />
         </Grid>
       </Grid>

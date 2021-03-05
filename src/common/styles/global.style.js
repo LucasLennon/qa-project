@@ -11,8 +11,9 @@ export default createGlobalStyle`
     min-height: 100vh;
     font-family: Arial, Helvetica, sans-serif;
   }
-  button, input, optgroup, select, textarea {
+  button, input, optgroup, select, textarea, p {
     font-family: inherit;
+    font-size: 1rem;
   }
   body {
     -webkit-font-smoothing: antialiased !important;

@@ -1,23 +1,33 @@
 import React from 'react'
-import { render, screen } from '@testing-library/react'
+import { render, screen, waitFor, act } from '@testing-library/react'
 
 import userEvent from '@testing-library/user-event'
 
 import UseDelayExample from './useDelayExample'
 
-jest.useFakeTimers()
-
 describe('useDelay', () => {
+  beforeEach(() => {
+    jest.useFakeTimers()
+  })
+
+  afterEach(() => {
+    jest.useRealTimers()
+  })
+
   test('should enter loading after click', async () => {
     render(<UseDelayExample />)
     userEvent.click(screen.getByRole('button'))
-    expect(screen.getByText('Is loading: true')).toBeInTheDocument()
+    expect(await screen.findByText('Is loading: true')).toBeInTheDocument()
   })
-  test('should exit loading after 5s', () => {
+
+  test('should exit loading after 5s', async () => {
     render(<UseDelayExample />)
     userEvent.click(screen.getByRole('button'))
-    expect(screen.getByText('Is loading: true')).toBeInTheDocument()
-    jest.runAllTimers()
-    expect(screen.getByText('Is loading: false')).toBeInTheDocument()
+    act(() => {
+      jest.advanceTimersByTime(5000)
+    })
+    expect(await screen.findByText('Is loading: false')).toBeInTheDocument()
+    // expect(await screen.findByText('Is loading: false')).toBeInTheDocument()
+    // expect(await screen.findByText('Is loading: true')).toBeInTheDocument()
   })
 })

@@ -1,14 +1,16 @@
 /*eslint-disable*/
 import React, { useRef, useState, useEffect } from 'react'
-import { func, number, oneOf, oneOfType, shape, string } from 'prop-types'
+import { bool, func, number, oneOf, oneOfType, shape, string } from 'prop-types'
 
 import { ADD_QUESTION, EDIT_QUESTION } from '../store/constants'
 import { Button } from '../../common/components'
+import { LoadingIcon } from '../../common/styles'
 
 import { ButtonGroup, Box, TextField, useMediaQuery, useTheme } from '@material-ui/core'
 
 const FormQuestions = ({
   cancelEdit,
+  isDelayedSubmit,
   handleSubmit,
   removeAllQuestions,
   questionToEdit,
@@ -16,6 +18,8 @@ const FormQuestions = ({
   const isEditing = !!questionToEdit
   const theme = useTheme()
   const biggerThenSm = useMediaQuery(theme.breakpoints.up('sm'))
+
+  const CreateEditButtonContent = isDelayedSubmit ? <LoadingIcon /> : (isEditing ? 'Edit Question' : 'Create Question')
 
   const [inputQuestion, setInputQuestion] = useState(isEditing ? questionToEdit.question : '')
   const [inputAnswer, setInputAnswer] = useState(isEditing ? questionToEdit.answer : '')
@@ -64,7 +68,7 @@ const FormQuestions = ({
       </Box>
       <Box display="flex" flexDirection="row-reverse" mt={1}>
         <ButtonGroup disableElevation orientation={!biggerThenSm ? "vertical" : 'horizontal'} variant="contained" color="primary" size="large" fullWidth={!biggerThenSm}>
-          <Button mr="0.3rem" type="submit">{isEditing ? 'Edit Question' : 'Create Question'}</Button>
+          <Button disabled={isDelayedSubmit} mr="0.3rem" type="submit">{CreateEditButtonContent}</Button>
           {isEditing && (
             <Button type="button" mr="0.3rem" onClick={handleEditCancellation}>
               Cancel
@@ -80,12 +84,14 @@ const FormQuestions = ({
 }
 
 FormQuestions.defaultProps = {
+  isDelayedSubmit: false,
   cancelEdit: () => {},
   handleSubmit: () => {},
   removeAllQuestions: () => {},
   questionToEdit: null,
 }
 FormQuestions.propTypes = {
+  isDelayedSubmit: bool,
   cancelEdit: func.isRequired,
   handleSubmit: func.isRequired,
   removeAllQuestions: func.isRequired,

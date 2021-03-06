@@ -6,8 +6,16 @@ import FormQuestions from '../components/FormQuestions'
 import ListQuestions from '../components/ListQuestion'
 import store from '../../common/store'
 import { Button, Tooltip } from '../../common/components'
+import useDelay from '../hooks/useDelay'
 
-import { Box, Container, Grid, Typography } from '@material-ui/core'
+import {
+  Box,
+  Checkbox,
+  Container,
+  FormControlLabel,
+  Grid,
+  Typography,
+} from '@material-ui/core'
 
 const sortQuestions = (a, b) => {
   const aQuestion = a.question.toLowerCase()
@@ -23,8 +31,10 @@ const sortQuestions = (a, b) => {
 
 const App = () => {
   const storedQuestions = useSelector((state) => state.questions)
-  const [sorted, setSorted] = useState(false)
   const [questionToEdit, setQuestionToEdit] = useState(null)
+  const [sorted, setSorted] = useState(false)
+  const [delayMessageSubmit, setDelayMessageSubmit] = useState(false)
+  const [loading, handleDelayedMethod] = useDelay(5000)
 
   const questions = useMemo(() => {
     if (sorted) {
@@ -33,8 +43,19 @@ const App = () => {
     return storedQuestions
   }, [sorted, storedQuestions])
 
+  // const handleSubmitWithDelay = async (type, payload, delay = 5000) => {
+  //   try{
+
+  //   }catch(e){
+  //   }
+  // }
+
   const handleSubmit = (type, payload) => {
-    store.dispatch({ type, payload })
+    if (delayMessageSubmit) {
+      handleDelayedMethod(() => store.dispatch({ type, payload }))
+    } else {
+      store.dispatch({ type, payload })
+    }
   }
 
   const removeQuestion = (payload) => {
@@ -57,6 +78,16 @@ const App = () => {
         </Grid>
         <Grid item xs={12} md={4}>
           <Grid container direction="row" justify="flex-end">
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={delayMessageSubmit}
+                  onChange={() => setDelayMessageSubmit(!delayMessageSubmit)}
+                />
+              }
+              label="Add delay"
+            />
+
             <Button
               variant="contained"
               color="primary"
@@ -83,6 +114,7 @@ const App = () => {
         </Grid>
         <Grid item xs={12}>
           <FormQuestions
+            isDelayedSubmit={loading}
             cancelEdit={() => setQuestionToEdit(null)}
             handleSubmit={handleSubmit}
             removeAllQuestions={removeAllQuestions}

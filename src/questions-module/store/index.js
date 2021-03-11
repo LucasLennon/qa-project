@@ -16,7 +16,7 @@ const questionStore = createSlice({
   reducers: {
     addQuestion: (state, action) => {
       const { payload } = action
-      if (!payload.question && !payload.answer) {
+      if (!payload.question || !payload.answer) {
         return state
       }
 

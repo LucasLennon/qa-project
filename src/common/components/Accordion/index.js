@@ -17,7 +17,10 @@ const Accordion = ({ header, value, children }) => {
   return (
     <AccordionContainer>
       <Box display="flex" justifyContent="space-between">
-        <AccordionHeader onClick={handleClickOnHeader}>
+        <AccordionHeader
+          data-testid="accordion-button"
+          onClick={handleClickOnHeader}
+        >
           {header}
         </AccordionHeader>
         {children}

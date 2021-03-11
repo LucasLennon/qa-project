@@ -1,5 +1,5 @@
 import configureMockStore from 'redux-mock-store'
-import reducer, { initialState, addQuestion } from './index'
+import reducer, { initialState, addQuestion } from './'
 import {
   ADD_QUESTION,
   REMOVE_ALL_QUESTIONS,
@@ -25,7 +25,7 @@ describe('Questions Store', () => {
     const action = {
       type: ADD_QUESTION,
       payload: {
-        questions: 'New questions have been added?',
+        question: 'New questions have been added?',
         answer: `Yes, here's one as you can see!`,
       },
     }
@@ -39,7 +39,7 @@ describe('Questions Store', () => {
     const action = {
       type: ADD_QUESTION,
       payload: {
-        questions: 'New questions have been added?',
+        question: 'New questions have been added?',
       },
     }
     store.dispatch(action)

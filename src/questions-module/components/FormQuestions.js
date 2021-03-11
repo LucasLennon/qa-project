@@ -56,12 +56,12 @@ const FormQuestions = ({
     <form onSubmit={submitForm}>
       <Box display="flex" flexDirection="column">
         <Box mb={1}>
-          <TextField fullWidth label="Question" value={inputQuestion} variant="outlined" name="question"
+          <TextField data-testid="question-input" fullWidth label="Question" value={inputQuestion} variant="outlined" name="question"
             onChange={(e) => setInputQuestion(e.target.value)}
           />
         </Box>
         <Box>
-          <TextField fullWidth multiline label="Answer" value={inputAnswer} variant="outlined" name="answer"
+          <TextField data-testid="answer-input" fullWidth multiline label="Answer" value={inputAnswer} variant="outlined" name="answer"
             onChange={(e) => setInputAnswer(e.target.value)}
           />
         </Box>
